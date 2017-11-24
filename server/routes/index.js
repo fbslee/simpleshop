@@ -5,10 +5,11 @@ var randomstring = require("randomstring");
 var rp = require('request-promise');
 
 router.get('/purchase', function (req, res, next) {
-  res.send('Do not use GET, use POST method');
+  res.send('Use POST method instead!');
 });
 
 router.post('/purchase', function (req, res, next) {
+  console.log('BODY:', req.body);
 
   var authKey = generateAuthKey();
 
@@ -19,16 +20,16 @@ router.post('/purchase', function (req, res, next) {
       'Authorization': 'Basic ' + authKey
     },
     body: req.body,
-    json: true
+    json: true // Automatically parses the JSON string in the response
   };
 
   rp(options)
-    .then(function (data) {
-      console.log('data back from api', data);
-      res.send(data);
+    .then(function (repos) {
+      console.log('RESPONSE:', repos);
+      res.send(repos);
     })
     .catch(function (err) {
-      console.error('Error',err)
+      console.error(err)
       throw err;
     });
 
