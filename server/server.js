@@ -28,10 +28,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, './dist')));
 app.use('/api', router);
 
-var clients = {};
+var port = 3000;
 
-var port = 3000 || process.env.PORT;
-
-server.listen(port, () => {
-    console.log("listening on port " + port);
-});
+server.listen(port);
