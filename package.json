@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "concurrently \"ng build --watch \" \" nodemon server/server.js \" ",
+    "start": "node server/server.js",
+    "dev": "concurrently \"ng build --watch \" \" nodemon server/server.js \" ",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
