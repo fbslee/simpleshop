@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
   cart: Array<any> =[];
   total = 0;
   headers = new Headers({ 'Content-Type': 'application/json' });
-  uri: string = environment.api;
+  uri: string = window.location.href + 'api/purchase';
   transaction = {
     "command": "cc:sale",
     "amount": "",
@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
 
   }
   ngOnInit(){
-    
+    console.log('where am i', window.location.href);
   }
 
   addItem(item){
